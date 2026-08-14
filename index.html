@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harsha Goud | Software Developer</title>
+<link rel="icon" href="profile.jpg">
+
+<meta name="description"
+      content="Harshvardhan Goud - Software Developer Portfolio">
+
+<meta name="author"
+      content="Harshvardhan Goud">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--bg:#07111f;
+--card:rgba(255,255,255,.08);
+--glass:rgba(255,255,255,.12);
+--border:rgba(255,255,255,.15);
+--text:#ffffff;
+--muted:#b6c2d1;
+--cyan:#38bdf8;
+--purple:#8b5cf6;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+html{scroll-behavior:smooth}
+body{
+background:linear-gradient(-45deg,#07111f,#111827,#0f172a,#1e1b4b);
+background-size:400% 400%;
+animation:bg 15s ease infinite;
+color:var(--text);
+overflow-x:hidden;
+}
+@keyframes bg{
+0%{background-position:0 50%}
+50%{background-position:100% 50%}
+100%{background-position:0 50%}
+}
+canvas{
+position:fixed;
+inset:0;
+z-index:-1;
+}
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:18px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(7,17,31,.55);
+backdrop-filter:blur(18px);
+border-bottom:1px solid rgba(255,255,255,.08);
+z-index:100;
+}
+.logo{
+font-size:28px;
+font-weight:800;
+background:linear-gradient(45deg,var(--cyan),var(--purple));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+nav ul{
+display:flex;
+list-style:none;
+gap:28px;
+}
+nav a{
+color:#fff;
+text-decoration:none;
+transition:.3s;
+}
+nav a:hover{color:var(--cyan)}
+section{
+padding:100px 8%;
+}
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:70px;
+    padding-top:120px;
+}
+
+.hero-content{
+    flex:1;
+    max-width:620px;
+}
+
+.profile{
+    flex:1;
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+}
+
+.avatar-img{
+    width:380px;
+    height:460px;
+    object-fit:cover;
+    border-radius:25px;
+    border:2px solid rgba(255,255,255,.15);
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
+    transition:.4s;
+}
+
+.avatar-img:hover{
+    transform:translateY(-8px);
+    box-shadow:0 35px 70px rgba(56,189,248,.35);
+}
+
+/* Responsive */
+
+@media (max-width:992px){
+
+.hero{
+    flex-direction:column-reverse;
+    text-align:center;
+}
+
+.hero-content{
+    flex:1;
+    max-width:650px;
+}
+
+.profile{
+    width:100%;
+    justify-content:center;
+}
+
+
+.buttons{
+    justify-content:center;
+}
+
+.avatar-img{
+    width:260px;
+    height:320px;
+}
+
+}
+
+.badge{
+display:inline-block;
+padding:8px 16px;
+border-radius:30px;
+background:rgba(56,189,248,.12);
+border:1px solid rgba(56,189,248,.25);
+color:#7dd3fc;
+margin-bottom:18px;
+}
+h1{
+font-size:64px;
+line-height:1.1;
+margin-bottom:10px;
+}
+.typing{
+font-size:28px;
+color:#7dd3fc;
+height:38px;
+margin-bottom:20px;
+}
+.hero p{
+color:var(--muted);
+line-height:1.8;
+margin-bottom:35px;
+}
+.buttons{
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+}
+.btn{
+padding:14px 28px;
+border-radius:50px;
+font-weight:600;
+text-decoration:none;
+transition:.35s;
+}
+.primary{
+background:linear-gradient(45deg,var(--cyan),var(--purple));
+color:#fff;
+}
+.secondary{
+border:1px solid rgba(255,255,255,.2);
+color:#fff;
+}
+.btn:hover{
+transform:translateY(-4px);
+box-shadow:0 12px 30px rgba(56,189,248,.25);
+}
+
+.title{
+text-align:center;
+font-size:40px;
+margin-bottom:50px;
+}
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+.card{
+background:var(--card);
+backdrop-filter:blur(20px);
+border:1px solid var(--border);
+padding:28px;
+border-radius:22px;
+transition:.35s;
+}
+.card:hover{
+transform:translateY(-8px);
+border-color:rgba(56,189,248,.35);
+}
+.card h3{margin-bottom:12px}
+.card p{
+color:var(--muted);
+line-height:1.7;
+}
+.skills{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+.skill{
+background:var(--card);
+padding:22px;
+border-radius:18px;
+border:1px solid var(--border);
+}
+.bar{
+height:8px;
+background:#1f2937;
+border-radius:20px;
+margin-top:12px;
+overflow:hidden;
+}
+.fill{
+height:100%;
+background:linear-gradient(90deg,var(--cyan),var(--purple));
+}
+.filters{
+display:flex;
+justify-content:center;
+gap:12px;
+margin-bottom:30px;
+flex-wrap:wrap;
+}
+.filter{
+padding:10px 18px;
+border-radius:30px;
+background:transparent;
+border:1px solid rgba(255,255,255,.15);
+color:#fff;
+cursor:pointer;
+}
+.filter.active,.filter:hover{
+background:linear-gradient(45deg,var(--cyan),var(--purple));
+border:none;
+}
+.project{
+overflow:hidden;
+}
+.thumb{
+height:180px;
+border-radius:14px;
+background:linear-gradient(135deg,#0ea5e9,#8b5cf6);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:60px;
+margin-bottom:18px;
+}
+.project span{
+display:inline-block;
+padding:6px 12px;
+background:rgba(56,189,248,.15);
+border-radius:20px;
+font-size:12px;
+margin-top:12px;
+}
+.contact{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+}
+.input{
+width:100%;
+padding:15px;
+margin-bottom:16px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,.1);
+background:rgba(255,255,255,.05);
+color:#fff;
+}
+textarea{
+height:140px;
+resize:none;
+}
+footer{
+padding:30px;
+text-align:center;
+color:#94a3b8;
+border-top:1px solid rgba(255,255,255,.08);
+}
+@media(max-width:900px){
+.hero,.contact{
+grid-template-columns:1fr;
+text-align:center;
+}
+.buttons{
+justify-content:center;
+}
+nav ul{
+display:none;
+}
+h1{
+font-size:44px;
+}
+.avatar{
+width:260px;
+height:260px;
+font-size:90px;
+}
+}
+.contact a{
+    color:#ffffff;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.contact a:hover{
+    color:#38bdf8;
+}
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<nav>
+<div class="logo">HG.</div>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#certifications">Certifications</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<section class="hero" id="home">
+
+    <!-- Left Side -->
+    <div class="hero-content">
+
+        <div class="badge">🟢 Open To Opportunities</div>
+
+        <h1>Harshvardhan Goud</h1>
+
+        <div class="typing">
+            <span id="type"></span>
+        </div>
+
+        <p>
+        B.Tech Information Technology graduate specializing in Python, SQL and MySQL.
+        Passionate about building scalable software applications and solving real-world
+        problems through clean, efficient code.
+        </p>
+
+        <div class="buttons">
+            <a href="#projects" class="btn primary">View Projects</a>
+
+            <a href="Harshvardhan_Goud_Resume.pdf"
+               download
+               class="btn secondary">
+                Download Resume
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Right Side -->
+    <div class="profile">
+        <img src="profile.png" alt="Harsha Goud" class="avatar-img">
+    </div>
+
+</section>
+
+<section id="about">
+<h2 class="title">About Me</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Education</h3>
+<p>
+B.Tech Information Technology graduate with a strong foundation in software development, database management, and full-stack web technologies. Proficient in Python, SQL, MySQL, and object-oriented programming, with hands-on experience in developing scalable applications and database-driven solutions. Passionate about solving real-world problems through clean, efficient code and eager to contribute to innovative software development projects.
+</p></div>
+
+<div class="card">
+    <h3>Experience</h3>
+
+    <p>
+        <strong>Snowflake Data Engineering Intern</strong><br>
+        Gained hands-on experience in Snowflake Data Cloud by working with SQL, virtual warehouses, data loading, transformations, and database management while building practical data engineering solutions.
+    </p>
+
+    <br>
+
+    <p>
+        <strong>Freelance Web Developer</strong><br>
+        Designed and developed responsive websites for small businesses and personal portfolios using HTML, CSS, JavaScript, and modern UI design principles, focusing on clean layouts and user-friendly experiences.
+    </p>
+</div>
+
+<div class="card">
+    <h3>Goal</h3>
+    <p>
+        To begin my career as a Software Developer where I can apply my expertise in Python, SQL, Snowflake, and web development to build scalable, high-quality applications. I aim to continuously enhance my technical skills while contributing to innovative, data-driven software solutions within a growth-oriented organization.
+    </p>
+</div>
+
+</div>
+</section>
+
+<section id="skills">
+    <h2 class="title">Technical Skills</h2>
+
+    <div class="skills">
+
+        <div class="skill">
+            <h3>Programming</h3>
+            <p>Python • SQL</p>
+            <div class="bar">
+                <div class="fill" style="width:92%"></div>
+            </div>
+        </div>
+
+        <div class="skill">
+            <h3>Database</h3>
+            <p>MySQL • Snowflake</p>
+            <div class="bar">
+                <div class="fill" style="width:88%"></div>
+            </div>
+        </div>
+
+        <div class="skill">
+            <h3>Web Development</h3>
+            <p>HTML • CSS • JavaScript • Django</p>
+            <div class="bar">
+                <div class="fill" style="width:90%"></div>
+            </div>
+        </div>
+
+        <div class="skill">
+            <h3>Tools</h3>
+            <p>Git • GitHub • VS Code</p>
+            <div class="bar">
+                <div class="fill" style="width:85%"></div>
+            </div>
+        </div>
+
+        <div class="skill">
+            <h3>Core Concepts</h3>
+            <p>OOP • DBMS • Data Structures</p>
+            <div class="bar">
+                <div class="fill" style="width:86%"></div>
+            </div>
+        </div>
+
+        <div class="skill">
+            <h3>Professional Skills</h3>
+            <p>Problem Solving • Communication • Team Collaboration</p>
+            <div class="bar">
+                <div class="fill" style="width:90%"></div>
+            </div>
+        </div>
+
+    </div>
+</section>  
+
+<section id="experience">
+    <h2 class="title">Experience</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Data Engineering Intern</h3>
+            <p style="color:#38bdf8; font-weight:600;">
+                Boolean Data Systems
+            </p>
+            <p style="margin:8px 0 15px; color:#7dd3fc;">
+                March 2026 – June 2026
+            </p>
+
+            <p>
+                Worked extensively with Snowflake Data Cloud, SQL, virtual
+                warehouses, data loading, transformations, and database
+                management. Gained practical experience in data engineering
+                workflows and cloud-based data processing.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Freelance Web Developer</h3>
+            <p style="color:#38bdf8; font-weight:600;">
+                Self-Employed
+            </p>
+            <p style="margin:8px 0 15px; color:#7dd3fc;">
+                2026 – Present
+            </p>
+
+            <p>
+                Designed and developed responsive websites, business landing
+                pages, and personal portfolio websites for small businesses
+                and individual clients using HTML, CSS, JavaScript, and
+                modern UI/UX design principles.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section id="projects">
+    <h2 class="title">Featured Projects</h2>
+
+    <div class="grid">
+
+        <!-- Institute Management System -->
+        <div class="card project">
+            <div class="thumb">🏫</div>
+
+            <h3>Institute Management System</h3>
+
+            <p>
+                Developed a web-based institute management application using
+                <strong>Django</strong>, <strong>Python</strong>, and
+                <strong>MySQL</strong> with Admin, Staff, and Student modules,
+                role-based authentication, CRUD operations, and a scalable MVT architecture.
+            </p>
+
+            <span>Django</span>
+            <span>Python</span>
+            <span>MySQL</span>
+        </div>
+
+        <!-- Portfolio Website -->
+        <div class="card project">
+            <div class="thumb">💻</div>
+
+            <h3>Professional Developer Portfolio</h3>
+
+            <p>
+                Designed and developed a premium responsive portfolio website using
+                <strong>HTML</strong>, <strong>CSS</strong>, and
+                <strong>JavaScript</strong> featuring glassmorphism UI,
+                particle animations, project showcase, downloadable resume,
+                and an integrated contact form.
+            </p>
+
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+        </div>
+
+        <!-- Metro Ticket Booking -->
+        <div class="card project">
+            <div class="thumb">🚇</div>
+
+            <h3>Metro Ticket Booking System</h3>
+
+            <p>
+                Built a console-based ticket reservation system using
+                <strong>Python</strong> and <strong>MySQL</strong> with secure
+                user authentication, fare calculation, booking management,
+                CRUD operations, and automated revenue reporting.
+            </p>
+
+            <span>Python</span>
+            <span>MySQL</span>
+            <span>SQL</span>
+        </div>
+
+        <!-- Mart Inventory -->
+        <div class="card project">
+            <div class="thumb">🛒</div>
+
+            <h3>Mart Inventory Management System</h3>
+
+            <p>
+                Developed an inventory and billing management system using
+                <strong>Python</strong> and <strong>MySQL</strong> to manage
+                products, stock availability, customer purchases, sales records,
+                and real-time inventory updates through database operations.
+            </p>
+
+            <span>Python</span>
+            <span>MySQL</span>
+            <span>Inventory</span>
+        </div>
+
+    </div>
+</section>
+
+<section id="certifications">
+    <h2 class="title">Certifications</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>SnowPro Core Certification</h3>
+            <p style="color:#38bdf8; font-weight:600;">Snowflake</p>
+            <p style="margin:8px 0 15px; color:#7dd3fc;">
+                Issued: May 2026
+            </p>
+
+            <p>
+                Certified in Snowflake Data Cloud, SQL operations, data loading,
+                performance optimization, secure data sharing, Time Travel,
+                Fail-safe, and virtual warehouse management.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Python Developer Certification</h3>
+            <p style="color:#38bdf8; font-weight:600;">
+                VCUBE Software Solutions
+            </p>
+
+            <p style="margin-top:15px;">
+                Completed professional training in Python programming,
+                object-oriented programming, problem-solving, and application
+                development with hands-on project implementation.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section id="contact">
+<h2 class="title">Let's Connect</h2>
+
+<div class="contact">
+
+<div class="card">
+<h3>Contact Information</h3>
+<br>
+<p>📍 Hyderabad, India</p>
+<br>
+<p>📧 harshvardhangoud51@gmail.com</p>
+<br>
+<p>📱 +91 7499878080</p>
+<br>
+<p>💼 <a href="https://www.linkedin.com/in/harshvardhan-goud-915ba329a/"
+      target="_blank">Harshvardhan Goud</a></p>
+
+</div>
+
+<div class="card">
+  <form action="https://formspree.io/f/xljrllgq" method="POST">
+
+    <input class="input"
+           type="text"
+           name="Name"
+           placeholder="Your Name"
+           required>
+
+    <input class="input"
+           type="email"
+           name="Email"
+           placeholder="Your Email"
+           required>
+
+    <textarea class="input"
+              name="message"
+              placeholder="Write your message..."
+              required></textarea>
+
+    <button type="submit" class="btn primary">
+      Send Message
+    </button>
+
+  </form>
+</div>
+
+</div>
+</section>
+
+<footer>
+© 2026 Harsha Goud • Designed with HTML, CSS & JavaScript
+</footer>
+
+<script>
+const words = [
+  "Software Developer",
+  "Python Developer",
+  "SQL Developer",
+  "Snowflake Certified"
+];
+
+let w=0,c=0,del=false;
+const t=document.getElementById("type");
+
+function typing(){
+let word=words[w];
+if(!del){
+t.textContent=word.substring(0,c++);
+if(c>word.length){
+del=true;
+setTimeout(typing,1000);
+return;
+}
+}else{
+t.textContent=word.substring(0,c--);
+if(c<0){
+del=false;
+w=(w+1)%words.length;
+}
+}
+setTimeout(typing,del?60:120);
+}
+typing();
+
+document.querySelectorAll(".filter").forEach(btn=>{
+btn.onclick=()=>{
+document.querySelector(".active").classList.remove("active");
+btn.classList.add("active");
+let f=btn.dataset.filter;
+document.querySelectorAll(".project").forEach(card=>{
+if(f==="all"||card.dataset.category.includes(f)){
+card.style.display="block";
+}else{
+card.style.display="none";
+}
+});
+};
+});
+
+
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+let particles=[];
+
+function resize(){
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+}
+window.onresize=resize;
+resize();
+
+for(let i=0;i<70;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2+1,
+dx:(Math.random()-.5)*0.5,
+dy:(Math.random()-.5)*0.5
+});
+}
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="rgba(56,189,248,.7)";
+particles.forEach(p=>{
+p.x+=p.dx;
+p.y+=p.dy;
+if(p.x<0||p.x>canvas.width)p.dx*=-1;
+if(p.y<0||p.y>canvas.height)p.dy*=-1;
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fill();
+});
+requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
